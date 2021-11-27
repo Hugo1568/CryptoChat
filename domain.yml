@@ -15,7 +15,7 @@ responses:
 
   utter_cheer_up:
   - text: "Aquí te dejo algo para levantar los animos!:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    image: "https://scontent.fhmo2-1.fna.fbcdn.net/v/t39.30808-6/261111090_427831495600717_161713924321643307_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHyLSndbnd_wI79WNHHEC8QRYRYsKiUhKZFhFiwqJSEpjqvwCC75vScnj7JqU7cllGR866YFaiFw_cMEm2SptGc&_nc_ohc=ddAWNezliCMAX_QBrQz&_nc_ht=scontent.fhmo2-1.fna&oh=dc30951e3e307f93e74971752349b1f1&oe=61A6F295"
 
   utter_did_that_help:
   - text: "Eso te ayudó?"
