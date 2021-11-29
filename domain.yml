@@ -8,6 +8,9 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - crypto_price:
+      use_entities:
+        - crypto
 
 responses:
   utter_greet:
@@ -28,6 +31,28 @@ responses:
 
   utter_iamabot:
   - text: "Soy un bot, impulsado por Rasa."
+
+  utter_crypto_price:
+  - text: "Te daré los precios de las criptomonedas."
+
+actions:
+  - action_crypto_price
+
+entities:
+  - crypto
+
+slots:
+  crypto:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: crypto
+    influence_conversation: true
+
+forms:
+  form_crypto_price:
+    required_slots:
+      - crypto
 
 session_config:
   session_expiration_time: 60

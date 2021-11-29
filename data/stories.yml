@@ -28,3 +28,13 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: las criptos
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: crypto_price
+  - action: action_crypto_price
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy

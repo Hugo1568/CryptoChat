@@ -28,8 +28,9 @@ coins =  json['data']
 CryptoName = "BNB"
 
 print("Datos de: " + str(CryptoName)+ "\n")
+texto ="--------"
 for coin in coins:
     if coin['symbol'] == CryptoName:
-        print("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n") 
-
+        texto = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n") 
+print(texto)
     #def ObtenerPrecio(self, msg):

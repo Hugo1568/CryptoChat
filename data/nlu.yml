@@ -94,3 +94,32 @@ nlu:
     - le hablo a un bot?
     - le hablo a un rbot?
     - estoy hablando con un humano?
+
+- intent: crypto_price
+  examples: |
+    - cual es el precio del [BTC](crypto)
+    - cual es el costo del [BTC](crypto)
+    - precio del [BTC](crypto)
+    - costo del [BTC](crypto)
+    - a cuanto el [BTC](crypto)
+    - precio [BTC](crypto)
+    - cuanto cuesta el [BTC](crypto)
+    - en cuanto esta [BTC](crypto)
+    - en cuanto anda [BTC](crypto)
+    - a como el [BTC](crypto)
+    - precio de [BTC](crypto)
+    - que precio tiene el [BTC](crypto)
+    - como esta el [BTC](crypto)
+    - cual es el precio del [Bitcoin](crypto)
+    - cual es el costo del [Bitcoin](crypto)
+    - precio del [Bitcoin](crypto)
+    - costo del [Bitcoin](crypto)
+    - a cuanto el [Bitcoin](crypto)
+    - precio [Bitcoin](crypto)
+    - cuanto cuesta el [Bitcoin](crypto)
+    - en cuanto esta [Bitcoin](crypto)
+    - en cuanto anda [Bitcoin](crypto)
+    - a como el [Bitcoin](crypto)
+    - precio de [Bitcoin](crypto)
+    - que precio tiene el [Bitcoin](crypto)
+    - como esta el [Bitcoin](crypto)
