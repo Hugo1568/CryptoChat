@@ -31,7 +31,7 @@ class ActionCryptoPrice(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         headers = {
-                'X-CMC_PRO_API_KEY': '199d6932-1299-498a-879e-fff878f21e89',
+                'X-CMC_PRO_API_KEY': 'THATS_A_SECRET_BRUH',
                 'Accepts': 'application/json'
         }
 

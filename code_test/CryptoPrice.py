@@ -1,36 +1,35 @@
 import requests
-import time
+import json
+from requests import Session
+import secrets
+from pprint import pprint as pp
 
-headers = {
-        'X-CMC_PRO_API_KEY': '199d6932-1299-498a-879e-fff878f21e89',
-        'Accepts': 'application/json'
-        }
+# Build up a class so we can easily make the REST API calls
 
-params = {
-        'start': '1',
-        'limit': '6',
-        'convert': 'USD'
-        }
+class CMC:
+    #https://coinmarketcap.com/api/documentation/v1/
+    def __init__(self,):
+        self.apiurl = 'https://pro-api.coinmarketcap.com'
+        self.headers = {'X-CMC_PRO_API_KEY': '199d6932-1299-498a-879e-fff878f21e89', 'Accepts': 'application/json'}
+        self.session = Session()
+        self.session.headers.update(self.headers)
+    
+    def getAllCoins(self):
+        url = self.apiurl + '/v1/cryptocurrency/map'
+        r = self.session.get(url)
+        data = r.json()['data']
+        with open('data.json', 'w') as f:
+                json.dump(data, f)
+        return data
+        
+    def getPrice(self, symbol):
+        url = self.apiurl + '/v1/cryptocurrency/quotes/latest'
+        parameters = {'symbol': symbol}
+        r = self.session.get(url, params=parameters)
+        data = r.json()['data']
+        return data
+    
+    
+cmc = CMC()
 
-paramsMXN = {
-        'start': '1',
-        'limit': '6',
-        'convert': 'MXN'
-        }
-
-url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
-
-json = requests.get(url, params = paramsMXN, headers = headers).json()
-
-coins =  json['data']
-
-#Examples: BTC, ETH, USDT, BNB, ADA, DODGE
-CryptoName = "BNB"
-
-print("Datos de: " + str(CryptoName)+ "\n")
-texto ="--------"
-for coin in coins:
-    if coin['symbol'] == CryptoName:
-        texto = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n") 
-print(texto)
-    #def ObtenerPrecio(self, msg):
+pp(cmc.getAllCoins())
