@@ -10,6 +10,7 @@ Chatbot en la plataforma de Telegram, que da seguimiento de criptomonedas, preci
   - Entrenamiento de prueba en español
   - Bot funcional en telegram
 - [ ] Seguimiento y precio de criptomondas
-  - Precio de criptomonedas pasando su símbolo ej: BTC, ETH
+  - Precio de criptomonedas
+    - Puedes pasando su símbolo nombre o slug ej: BTC/Bitcoin/bitcoin.
 - [ ] Información básica sobre criptomonedas
 - [ ] Automatización de tareas
