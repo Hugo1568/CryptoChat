@@ -10,7 +10,7 @@ class CMC:
     #https://coinmarketcap.com/api/documentation/v1/
     def __init__(self,):
         self.apiurl = 'https://pro-api.coinmarketcap.com'
-        self.headers = {'X-CMC_PRO_API_KEY': '199d6932-1299-498a-879e-fff878f21e89', 'Accepts': 'application/json'}
+        self.headers = {'X-CMC_PRO_API_KEY': 'API_KEY', 'Accepts': 'application/json'}
         self.session = Session()
         self.session.headers.update(self.headers)
     
