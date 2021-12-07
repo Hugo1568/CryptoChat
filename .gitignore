@@ -231,3 +231,5 @@ rasa/keys
 /results/
 # Local Netlify folder
 .netlify
+secreto.py
+credentials.yml

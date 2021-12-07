@@ -13,7 +13,8 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, EventType
 import requests
-
+import re
+import secrets
 
 class ActionCryptoPrice(Action):
 
@@ -31,13 +32,13 @@ class ActionCryptoPrice(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         headers = {
-                'X-CMC_PRO_API_KEY': 'THATS_A_SECRET_BRUH',
+                'X-CMC_PRO_API_KEY': secrets.API_KEY,
                 'Accepts': 'application/json'
         }
 
         paramsMXN = {
                 'start': '1',
-                'limit': '6',
+                'limit': '200',
                 'convert': 'MXN'
                 }
 
@@ -46,17 +47,87 @@ class ActionCryptoPrice(Action):
         json = requests.get(url, params = paramsMXN, headers = headers).json()
         coins =  json['data']
 
-        CryptoName = tracker.get_slot("crypto")
-        lmao=str(CryptoName)
-        
-        for coin in coins:
-            if coin['symbol'] == CryptoName:
-                lmao = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
-            if coin['slug'] == CryptoName:
-                lmao = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+        CryptoName = str(tracker.get_slot("crypto"))
+
+
+        display_text="La moneda no se encontró, o no está en el top 200 de criptomonedas, intenta utilizar su símbolo. ejemplo: Bitocin: BTC"
+        if CryptoName is None:
+            display_text="Te mamaste no hay token"
+        if CryptoName is not None:
+            for coin in coins:
+                if coin['slug'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                if coin['name'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                if coin['symbol'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                else:
+                    if re.match(r'\b[a-zA-Z]{3,6}\b', CryptoName):
+                        CryptoName = CryptoName.upper()
+                        if coin['symbol'] == CryptoName:
+                            display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+
             
 
-        dispatcher.utter_message(text=lmao)
+        dispatcher.utter_message(text=display_text)
+
+        return []
+
+
+class ActionCryptoCompare(Action):
+
+    def name(self) -> Text:
+        return "action_crypto_price"
+
+    @staticmethod
+    def fetch_slots(tracker: Tracker):
+        #Collects slots on crypto price
+        tracker.get_slot("crypto")
+
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        headers = {
+                'X-CMC_PRO_API_KEY': secrets.API_KEY,
+                'Accepts': 'application/json'
+        }
+
+        paramsMXN = {
+                'start': '1',
+                'limit': '200',
+                'convert': 'MXN'
+                }
+
+        url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+
+        json = requests.get(url, params = paramsMXN, headers = headers).json()
+        coins =  json['data']
+
+        CryptoName = str(tracker.get_slot("crypto"))
+
+
+        display_text="La moneda no se encontró, o no está en el top 200 de criptomonedas, intenta utilizar su símbolo. ejemplo: Bitocin: BTC"
+        if CryptoName is None:
+            display_text="Te mamaste no hay token"
+        if CryptoName is not None:
+            for coin in coins:
+                if coin['slug'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                if coin['name'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                if coin['symbol'] == CryptoName:
+                    display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+                else:
+                    if re.match(r'\b[a-zA-Z]{3,6}\b', CryptoName):
+                        CryptoName = CryptoName.upper()
+                        if coin['symbol'] == CryptoName:
+                            display_text = ("El precio del " + str(coin['slug']) + " es de: $" + str(round(coin['quote']['MXN']['price'],4) ) + " pesos mexicanos" + "\n")
+
+            
+
+        dispatcher.utter_message(text=display_text)
 
         return []
 

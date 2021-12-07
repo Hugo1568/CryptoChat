@@ -1,8 +1,9 @@
 import requests
+import secreto
 
 
 headers = {
-                'X-CMC_PRO_API_KEY': 'API_KEY',
+                'X-CMC_PRO_API_KEY': secreto.API_KEY,
                 'Accepts': 'application/json'
         }
 

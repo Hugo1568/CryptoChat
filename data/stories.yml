@@ -35,6 +35,7 @@ stories:
   - action: utter_greet
   - intent: crypto_price
   - action: action_crypto_price
+  - action: action_restart
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy

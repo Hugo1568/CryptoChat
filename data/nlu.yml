@@ -95,31 +95,38 @@ nlu:
     - le hablo a un rbot?
     - estoy hablando con un humano?
 
+- regex: crypto
+  examples: |
+    - \b[a-zA-Z]{3,6}\b
+    - ^\S*
+    - ^(?:[A-Za-z]+ ){1,2}[A-Za-z]*
+
 - intent: crypto_price
   examples: |
     - cual es el precio del [BTC](crypto)
-    - cual es el costo del [BTC](crypto)
-    - precio del [BTC](crypto)
-    - costo del [BTC](crypto)
-    - a cuanto el [BTC](crypto)
-    - precio [BTC](crypto)
-    - cuanto cuesta el [BTC](crypto)
-    - en cuanto esta [BTC](crypto)
-    - en cuanto anda [BTC](crypto)
-    - a como el [BTC](crypto)
-    - precio de [BTC](crypto)
-    - que precio tiene el [BTC](crypto)
-    - como esta el [BTC](crypto)
-    - cual es el precio del [Bitcoin](crypto)
+    - cual es el costo del [ADA](crypto)
+    - precio del [DOGE](crypto)
+    - costo del [USDT](crypto)
+    - a cuanto el [XRP](crypto)
+    - precio [MATIC](crypto)
+    - cuanto cuesta el [LTC](crypto)
+    - en cuanto esta [MANA](crypto)
+    - en cuanto anda [AXS](crypto)
+    - a como el [BTCB](crypto)
+    - precio de [ATOM](crypto)
+    - que precio tiene el [THETA](crypto)
+    - como esta el [WAX](crypto)
+
+    - cual es el precio del [bitcoin](crypto)
     - cual es el costo del [Bitcoin](crypto)
-    - precio del [Bitcoin](crypto)
-    - costo del [Bitcoin](crypto)
-    - a cuanto el [Bitcoin](crypto)
-    - precio [Bitcoin](crypto)
-    - cuanto cuesta el [Bitcoin](crypto)
-    - en cuanto esta [Bitcoin](crypto)
-    - en cuanto anda [Bitcoin](crypto)
-    - a como el [Bitcoin](crypto)
-    - precio de [Bitcoin](crypto)
-    - que precio tiene el [Bitcoin](crypto)
-    - como esta el [Bitcoin](crypto)
+    - precio del [binance-coin](crypto)
+    - costo del [Basic Attention Token](crypto)
+    - a cuanto el [Binance Coin](crypto)
+    - precio [USD Coin](crypto)
+    - cuanto cuesta el [SHIBA INU](crypto)
+    - en cuanto esta [Bitcoin Cash](crypto)
+    - en cuanto anda [Axie Infinity](crypto)
+    - a como el [FTX Token](crypto)
+    - precio de [UNUS SED LEO](crypto)
+    - que precio tiene el [Curve DAO Token](crypto)
+    - como esta el [Theta Fuel](crypto)
