@@ -11,3 +11,50 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Informacion de criptomonedas
+  steps:
+  - intent: que_es_criptomoneda
+  - action: utter_que_es_criptomoneda
+
+- rule: Informacion sobre wallets
+  steps:
+  - intent: que_es_wallet
+  - action: utter_que_es_wallet
+
+- rule: Informacion sobre private keys
+  steps:
+  - intent: que_es_key
+  - action: utter_que_es_key
+
+- rule: Informacion sobre Blockchain
+  steps:
+  - intent: que_es_blockchain
+  - action: utter_que_es_blockchain
+
+- rule: Informacion sobre trading
+  steps:
+  - intent: info_trading
+  - action: utter_info_trading
+
+- rule: Informacion sobre donde invertir
+  steps:
+  - intent: donde_invertir
+  - action: utter_donde_invertir
+
+- rule: Precio de criptomonedas
+  steps:
+  - intent: crypto_price
+  - action: action_crypto_price
+  - action: action_restart
+
+- rule: Comparar criptomonedas
+  steps:
+  - intent: crypto_compare
+  - action: action_crypto_compare
+  - action: action_restart
+
+- rule: Quien eres
+  steps:
+  - intent: quien_eres
+  - action: utter_quien_eres

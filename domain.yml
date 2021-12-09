@@ -1,59 +1,89 @@
-version: "3.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - crypto_price:
-      use_entities:
-        - crypto
-
-responses:
-  utter_greet:
-  - text: "Hey! Como estas?"
-
-  utter_cheer_up:
-  - text: "Aquí te dejo algo para levantar los animos!:"
-    image: "https://scontent.fhmo2-1.fna.fbcdn.net/v/t39.30808-6/261111090_427831495600717_161713924321643307_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHyLSndbnd_wI79WNHHEC8QRYRYsKiUhKZFhFiwqJSEpjqvwCC75vScnj7JqU7cllGR866YFaiFw_cMEm2SptGc&_nc_ohc=ddAWNezliCMAX_QBrQz&_nc_ht=scontent.fhmo2-1.fna&oh=dc30951e3e307f93e74971752349b1f1&oe=61A6F295"
-
-  utter_did_that_help:
-  - text: "Eso te ayudó?"
-
-  utter_happy:
-  - text: "Excelente, sigue así!"
-
-  utter_goodbye:
-  - text: "Nos volveremos a ver"
-
-  utter_iamabot:
-  - text: "Soy un bot, impulsado por Rasa."
-
-  utter_crypto_price:
-  - text: "Te daré los precios de las criptomonedas."
-
-actions:
-  - action_crypto_price
-
-entities:
-  - crypto
-
-slots:
-  crypto:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: crypto
-    influence_conversation: true
-
-forms:
-  form_crypto_price:
-    required_slots:
-      - crypto
-
+version: '3.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- affirm
+- crypto_compare
+- crypto_price:
+    use_entities:
+    - crypto
+- greet
+- deny
+- goodbye
+- mood_great
+- mood_unhappy
+- bot_challenge
+- que_es_criptomoneda
+- que_es_wallet
+- que_es_key
+- que_es_blockchain
+- info_trading
+- donde_invertir
+- quien_eres
+entities:
+- crypto
+- crypto2
+slots:
+  crypto:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: crypto
+  crypto2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: crypto2
+responses:
+  utter_greet:
+  - text: Hey! Como estas?
+  - text: Hola!
+  - text: Hola, en que puedo ayudarte?
+  utter_deny:
+  - text: Siento no poder ayudarte.
+  utter_cheer_up:
+  - text: 'Aquí te dejo algo para levantar los animos!:'
+    image: https://scontent.fhmo2-1.fna.fbcdn.net/v/t39.30808-6/261111090_427831495600717_161713924321643307_n.jpg?_nc_cat=1&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeHyLSndbnd_wI79WNHHEC8QRYRYsKiUhKZFhFiwqJSEpjqvwCC75vScnj7JqU7cllGR866YFaiFw_cMEm2SptGc&_nc_ohc=ddAWNezliCMAX_QBrQz&_nc_ht=scontent.fhmo2-1.fna&oh=dc30951e3e307f93e74971752349b1f1&oe=61A6F295
+  utter_did_that_help:
+  - text: Eso te ayudó?
+  utter_happy:
+  - text: Excelente, sigue así!
+  - text: Que bueno!
+  utter_goodbye:
+  - text: Nos volveremos a ver
+  - text: Adios.
+  - text: Hasta pronto.
+  utter_iamabot:
+    - text: im a bot.
+  utter_quien_eres:
+  - text: Soy un bot en español impulsado por Rasa, puedo darte el precio del top 200 criptomonedas de CoinMarketCap, ademas de que puedo darte la equivalencia de una cripto en otra y me puedes preguntar preguntas basicas sobre las criptos.
+  utter_crypto_price:
+  - text: Te daré los precios de las criptomonedas.
+  utter_que_es_criptomoneda:
+  - text: Una criptomoneda o criptoactivo es un medio digital de intercambio que utiliza criptografía fuerte para asegurar las transacciones, controlar la creación de unidades adicionales y verificar la transferencia de activos usando tecnologías de registro distribuido. Las criptomonedas son un tipo de divisa alternativa o moneda digital.
+  utter_que_es_wallet:
+  - text: Una wallet es un software que almacena tus claves públicas y privadas (siempre van juntas) y te permite enviar y recibir criptomonedas a través de la Blockchain, almacenar las que quieras y controlar siempre que quieras tu saldo, hay muchas wallets online, algunas de las mas populares para méxico son binance y bitso.
+  utter_que_es_key:
+  - text: Una clave privada o private key, es una clave secreta generada por el proceso de criptografía asimétrica. Esta clave es la que permite la total propiedad y manejo de nuestros monederos de criptomonedas. En Bitcoin, esta clave es generada usando criptografía del tipo ECDSA, usando la curva elíptica secp256k1. Este es un tipo especial de criptografía asimétrica, que nos brinda un alto nivel de seguridad.
+  utter_que_es_blockchain:
+  - text: Una cadena de bloques o blockchain, es una estructura de datos cuya información se agrupa en conjuntos (bloques) a los que se les añade metainformaciones relativas a otro bloque de la cadena anterior en una línea temporal. De esta forma, gracias a técnicas criptográficas, la información contenida en un bloque solo puede ser repudiada o editada modificando todos los bloques posteriores. Esta propiedad permite su aplicación en un entorno distribuido de manera que la estructura de datos blockchain puede ejercer de base de datos pública no relacional que contenga un histórico irrefutable de información.
+  utter_info_trading:
+  - text: El trading de criptomonedas, también conocidas como criptodivisas, supone invertir en torno a los movimientos de sus precios mediante una cuenta de trading de CFD, o comprar y vender las criptodivisas subyacentes en un mercado de negociación.
+  utter_donde_invertir:
+  - text: Actualmente en México hay cerca de 10 exchanges donde se puede crear una cuenta y comenzar a operar las criptomonedas. Entre las mas populares se encuentran Bitso, Etoro, Libertex, Avatrade, Binance, Bitstamp, Coinbase, Kraken, Bitfinex.
+actions:
+- action_crypto_compare
+- action_crypto_price
+- utter_did_that_help
+- utter_happy
+forms:
+  form_crypto_price:
+    required_slots:
+    - crypto
+  form_crypto_compare:
+    required_slots:
+    - crypto
+    - crypto2

@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -18,7 +17,6 @@ nlu:
     - buenastardes
     - Hola
     - saludos
-
 - intent: goodbye
   examples: |
     - adios
@@ -31,7 +29,6 @@ nlu:
     - luego nos vemos
     - bye bye
     - hasta pronto
-
 - intent: affirm
   examples: |
     - si
@@ -40,7 +37,7 @@ nlu:
     - por supuesto
     - suena bien
     - correcto
-
+    - Si
 - intent: deny
   examples: |
     - no
@@ -50,7 +47,6 @@ nlu:
     - asi no
     - de ninguna manera
     - no realmente
-
 - intent: mood_great
   examples: |
     - perfecto
@@ -62,11 +58,9 @@ nlu:
     - estoy bien
     - estoy genial
     - voy a salvar el mundo
-    - perfecto
     - extremadamente bien
     - muy bien
     - excelente
-
 - intent: mood_unhappy
   examples: |
     - mi día fue horrible
@@ -83,7 +77,6 @@ nlu:
     - extremadamente triste
     - muuy triste
     - demasiado triste
-
 - intent: bot_challenge
   examples: |
     - eres un bot?
@@ -94,39 +87,122 @@ nlu:
     - le hablo a un bot?
     - le hablo a un rbot?
     - estoy hablando con un humano?
-
-- regex: crypto
-  examples: |
-    - \b[a-zA-Z]{3,6}\b
-    - ^\S*
-    - ^(?:[A-Za-z]+ ){1,2}[A-Za-z]*
-
 - intent: crypto_price
   examples: |
-    - cual es el precio del [BTC](crypto)
-    - cual es el costo del [ADA](crypto)
+    - cual es el precio del [BTC](crypto)?
+    - cual es el costo del [ADA](crypto)?
     - precio del [DOGE](crypto)
     - costo del [USDT](crypto)
-    - a cuanto el [XRP](crypto)
+    - a cuanto el [XRP](crypto)?
     - precio [MATIC](crypto)
-    - cuanto cuesta el [LTC](crypto)
-    - en cuanto esta [MANA](crypto)
-    - en cuanto anda [AXS](crypto)
-    - a como el [BTCB](crypto)
+    - cuanto cuesta el [LTC](crypto)?
+    - en cuanto esta [MANA](crypto)?
+    - en cuanto anda [AXS](crypto)?
+    - a como el [BTCB](crypto)?
     - precio de [ATOM](crypto)
-    - que precio tiene el [THETA](crypto)
-    - como esta el [WAX](crypto)
-
-    - cual es el precio del [bitcoin](crypto)
-    - cual es el costo del [Bitcoin](crypto)
-    - precio del [binance-coin](crypto)
-    - costo del [Basic Attention Token](crypto)
-    - a cuanto el [Binance Coin](crypto)
-    - precio [USD Coin](crypto)
-    - cuanto cuesta el [SHIBA INU](crypto)
-    - en cuanto esta [Bitcoin Cash](crypto)
-    - en cuanto anda [Axie Infinity](crypto)
-    - a como el [FTX Token](crypto)
+    - que precio tiene el [THETA](crypto)?
+    - como esta el [WAX](crypto)?
+    - cual es el precio del [bitcoin](crypto)?
+    - cual es el costo del [Bitcoin](crypto)?
+    - precio del [binance-coin](crypto)?
+    - costo del [Basic Attention Token](crypto)?
+    - a cuanto el [Binance Coin](crypto)?
+    - precio [USD Coin](crypto)?
+    - cuanto cuesta el [SHIBA INU](crypto)?
+    - en cuanto esta [Bitcoin Cash](crypto)?
+    - en cuanto anda [Axie Infinity](crypto)?
+    - a como el [FTX Token](crypto)?
     - precio de [UNUS SED LEO](crypto)
-    - que precio tiene el [Curve DAO Token](crypto)
-    - como esta el [Theta Fuel](crypto)
+    - que precio tiene el [Curve DAO Token](crypto)?
+    - como esta el [Theta Fuel](crypto)?
+    - Dime el precio del [bitcoin](crypto)
+    - Cuanto vale un [doge](crypto)?
+    - Cuanto vale un [DOGE](crypto)?
+- intent: crypto_compare
+  examples: |
+    - cuanto equivale un [BTC](crypto) en [DOGE](crypto2)?
+    - convierte un [ADA](crypto) a [BTC](crypto2)
+    - convierteme un [bitcoin](crypto) a [binance-coin](crypto2)
+    - cuantos [XRP](crypto) es un [DOGE](crypto2)?
+    - como cuantos [DOGE](crypto) es un [BTC](crypto2)?
+    - cuanto es un [SHIBA INU](crypto) en [AXS](crypto2)?
+    - dime cuanto es un [MANA](crypto) en [USDT](crypto2)
+    - valor de un [Btc](crypto) en [BTC](crypto2)
+    - valor del [USDT](crypto) en [AXS](crypto2)
+    - valor de [doge](crypto) en [bitcoin](crypto2)
+    - cuanto seria un [binance-coin](crypto) en [USDT](crypto2)?
+    - como seria un [bitcoin](crypto) en [XRP](crypto2)?
+    - cuanto equivale un [DOGE](crypto) en [BTC](crypto2)?
+    - Cuantos [eth](crypto) equivale un [BTC](crypto2)?
+    - Cuantos [ETH](crypto) equivale un [BTC](crypto2)?
+- regex: crypto
+  examples: |
+    - ^\S*
+- regex: crypto2
+  examples: |
+    - \b[a-zA-Z]{3,6}\b
+    - ^(?:[A-Za-z]+ ){1,2}[A-Za-z]*
+    - ^\S*
+- intent: que_es_criptomoneda
+  examples: |
+    - Que es una criptomoneda?
+    - dame informacion sobre criptomonedas
+    - Informacion sobre criptomonedas
+    - Info de criptos
+- intent: que_es_wallet
+  examples: |
+    - Que es una wallet?
+    - podiras decirme que es una wallet
+    - wallet, que es?
+    - Informacion sobre wallets
+    - wallet info
+    - info wallet
+- intent: que_es_key
+  examples: |
+    - que es una key?
+    - que es una llave privada?
+    - que es una clave privada
+    - llave privada, que es?
+    - info sobre keys
+    - key info
+    - clave privada, que es?
+    - informacion sobre claves privadas
+- intent: que_es_blockchain
+  examples: |
+    - que es un blockchain?
+    - podrias decirme que es un blockchain?
+    - blockchain, que es?
+    - informacion sobre blockchain
+    - blockchain info
+    - info blockchain
+- intent: info_trading
+  examples: |
+    - que es el trading?
+    - podrias decirme que es el trading?
+    - que es el trading de criptomonedas?
+    - podrias decirme que es el trading de criptomonedas?
+    - trading, que es?
+    - informacion sobre trading
+    - trading info
+    - info trading
+- intent: donde_invertir
+  examples: |
+    - donde puedo invertir?
+    - sitios para invertir
+    - donde pudiera invertir?
+    - como puedo invertir?
+    - inversiones info
+    - info inversiones
+    - invertir info
+    - info invertir
+    - ayudame a invertir
+    - quisiera invertir
+- intent: quien_eres
+  examples: |
+    - quien eres?
+    - que eres?
+    - quien eres tu?
+    - cuantame acerca de ti
+    - dime quien eres
+    - quien sos?
+    - informacion tuya
